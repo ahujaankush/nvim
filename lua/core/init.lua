@@ -45,3 +45,5 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     -- vim.cmd("redraw!")
   end,
 })
+
+require("core.neovide")
