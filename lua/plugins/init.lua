@@ -172,6 +172,11 @@ local default_plugins = {
     end,
   },
 
+  -- Debugger
+  {
+    "mfussenegger/nvim-dap",
+  },
+
   -- diagnostics, quickfixed
   {
     "folke/trouble.nvim",
@@ -196,18 +201,6 @@ local default_plugins = {
     init = require("core.utils").lazy_load "lsp_signature.nvim",
     config = function(_, opts)
       require("lsp_signature").setup(opts)
-    end,
-  },
-
-  -- vscode like pictograms
-  {
-    "onsails/lspkind.nvim",
-    opts = function()
-      return require "plugins.configs.lspkind"
-    end,
-    init = require("core.utils").lazy_load "lspkind.nvim",
-    config = function(_, opts)
-      require("lspkind").init(opts)
     end,
   },
 
@@ -344,6 +337,24 @@ local default_plugins = {
     end,
   },
 
+  {
+    "max397574/better-escape.nvim",
+    event = "InsertEnter",
+    config = function()
+      require("better_escape").setup()
+    end,
+  },
+
+  {
+    "nvim-orgmode/orgmode",
+    lazy = false,
+    config = function()
+      local orgmode = require "orgmode"
+      orgmode.setup_ts_grammar()
+      orgmode.setup {}
+    end,
+  },
+
   -- Only load whichkey after all the gui
   {
     "folke/which-key.nvim",
@@ -355,14 +366,6 @@ local default_plugins = {
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "whichkey")
       require("which-key").setup(opts)
-    end,
-  },
-
-  {
-    "max397574/better-escape.nvim",
-    event = "InsertEnter",
-    config = function()
-      require("better_escape").setup()
     end,
   },
 }

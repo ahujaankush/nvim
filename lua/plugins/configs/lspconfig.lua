@@ -3,7 +3,7 @@ require "nvchad_ui.lsp"
 
 local M = {}
 local utils = require "core.utils"
-local servers = { "html", "cssls", "tsserver", "clangd", "pyright" }
+local servers = { "html", "cssls", "tsserver", "clangd", "pyright", "asm_lsp" }
 local lspconfig = require "lspconfig"
 -- export on_attach & capabilities for custom lspconfigs
 

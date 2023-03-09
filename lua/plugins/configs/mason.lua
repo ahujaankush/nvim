@@ -12,6 +12,9 @@ local options = {
 
     -- C/Cpp
     "clangd",
+
+    -- ASM
+    "asm-lsp",
   },
 
   PATH = "skip",

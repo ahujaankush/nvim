@@ -10,6 +10,7 @@ local options = {
     "c",
     "markdown",
     "markdown_inline",
+    "norg",
   },
   indent = {
     enable = true,

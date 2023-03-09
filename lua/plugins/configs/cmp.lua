@@ -1,4 +1,7 @@
 local cmp = require "cmp"
+local MAX_LABEL_WIDTH = 25
+local MIN_LABEL_WIDTH = 25
+local ELLIPSIS_CHAR = "…"
 
 dofile(vim.g.base46_cache .. "cmp")
 
@@ -17,7 +20,8 @@ local formatting_style = {
   format = function(_, item)
     local icons = require("nvchad_ui.icons").lspkind
     local icon = (cmp_ui.icons and icons[item.kind]) or ""
-
+    local label = item.abbr
+    local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
     if cmp_style == "atom" or cmp_style == "atom_colored" then
       icon = " " .. icon .. " "
       item.menu = cmp_ui.lspkind_text and "   (" .. item.kind .. ")" or ""
@@ -26,7 +30,12 @@ local formatting_style = {
       icon = cmp_ui.lspkind_text and (" " .. icon .. " ") or icon
       item.kind = string.format("%s %s", icon, cmp_ui.lspkind_text and item.kind or "")
     end
-
+    if truncated_label ~= label then
+      item.abbr = truncated_label .. ELLIPSIS_CHAR
+    elseif string.len(label) < MIN_LABEL_WIDTH then
+      local padding = string.rep(" ", MIN_LABEL_WIDTH - string.len(label))
+      item.abbr = label .. padding
+    end
     return item
   end,
 }
@@ -108,6 +117,7 @@ local options = {
     { name = "buffer" },
     { name = "nvim_lua" },
     { name = "path" },
+    { name = "orgmode" },
   },
 }
 
