@@ -58,7 +58,7 @@ M.ui = {
       { "  Find Word", "Spc f w", "Telescope live_grep" },
       { "  Bookmarks", "Spc b m", "Telescope marks" },
       { "  Themes", "Spc t f", "Telescope themes" },
-      { "  Settings", "Spc t s", "edit $MYVIMRC | :cd %:p:h" },
+      { "  Settings", "Spc t e", "edit $MYVIMRC | :cd %:p:h" },
     },
   },
 

@@ -1,7 +1,7 @@
 vim.api.nvim_command "set guifont=CaskaydiaCove\\ Nerd\\ Font\\ Mono,Cooper\\ Hewitt:h13"
 
 vim.g.neovide_refresh_rate = 60
-vim.g.neovide_transparency = 1.0
+vim.g.neovide_transparency = 1
 
 vim.g.neovide_no_idle = true
 vim.g.neovide_profiler = false

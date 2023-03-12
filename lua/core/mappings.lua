@@ -92,6 +92,28 @@ M.null_ls = {
   },
 }
 
+M.truezen = {
+  plugin = true,
+  n = {
+    ["<leader>zn"] = {
+      "<cmd> TZNarrow <CR>",
+      "True-Zen narrow",
+    },
+    ["<leader>zf"] = {
+      "<cmd> TZFocus <CR>",
+      "True-Zen focus",
+    },
+    ["<leader>zm"] = {
+      "<cmd> TZMinimalist <CR>",
+      "True-Zen minimalist",
+    },
+    ["<leader>za"] = {
+      "<cmd> TZAtaraxis <CR>",
+      "True-Zen ataraxis",
+    },
+  },
+}
+
 M.tabufline = {
   plugin = true,
 

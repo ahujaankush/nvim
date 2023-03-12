@@ -5,11 +5,24 @@ local default_plugins = {
   "nvim-lua/plenary.nvim",
   "tpope/vim-repeat",
   -- mkdir -p
-  "jghauser/mkdir.nvim",
+  { "jghauser/mkdir.nvim", lazy = false },
   {
     "ggandor/leap.nvim",
     config = function()
       require("leap").add_default_mappings()
+    end,
+  },
+  -- autosave
+  {
+    "Pocco81/auto-save.nvim",
+    init = function()
+      require("core.utils").lazy_load "auto-save.nvim"
+    end,
+    opts = function()
+      require "plugins.configs.autosave"
+    end,
+    config = function(_, opts)
+      require("auto-save").setup(opts)
     end,
   },
   -- nvchad plugins
@@ -275,6 +288,41 @@ local default_plugins = {
     end,
   },
 
+  {
+    "folke/todo-comments.nvim",
+    init = require("core.utils").lazy_load "todo-comments.nvim",
+    config = function()
+      require("todo-comments").setup {}
+    end,
+  },
+
+  -- smooth scrolling
+  {
+    "karb94/neoscroll.nvim",
+    init = function()
+      require("core.utils").lazy_load "neoscroll.nvim"
+    end,
+    opts = function()
+      require "plugins.configs.neoscroll"
+    end,
+    setup = function(_, opts)
+      require("neoscroll").setup(opts)
+    end,
+  },
+
+  -- Zenmode
+
+  {
+    "Pocco81/true-zen.nvim",
+    init = function()
+      require("core.utils").lazy_load "true-zen.nvim"
+      require("core.utils").load_mappings "truezen"
+    end,
+    opts = function()
+      require "plugins.configs.truezen"
+    end,
+  },
+
   -- file managing , picker etc
   {
     "nvim-tree/nvim-tree.lua",
@@ -334,6 +382,20 @@ local default_plugins = {
     end,
     config = function()
       require("scrollbar").setup()
+    end,
+  },
+
+  -- manage nvim windows
+  {
+    "sindrets/winshift.nvim",
+    init = function()
+      require("core.utils").lazy_load "winshift.nvim"
+    end,
+    opts = function()
+      require "plugins.configs.winshift"
+    end,
+    config = function(_, opts)
+      require("winshift").setup(opts)
     end,
   },
 
