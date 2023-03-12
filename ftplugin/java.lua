@@ -102,6 +102,42 @@ local config = {
   },
 }
 
+local new_cmd = vim.api.nvim_create_user_command
+new_cmd("JdtCompileInc", function()
+  require("jdtls").compile "incremental"
+end, {})
+new_cmd("JdtCompileFull", function()
+  require("jdtls").compile "full"
+end, {})
+new_cmd("JdtBuildProject", function(opts)
+  require("jdtls").build_projects(opts)
+end, {nargs = '*'})
+new_cmd("JdtUpdateConfig", function()
+  require("jdtls").update_project_config()
+end, {})
+new_cmd("JdtJol", function()
+  require("jdtls").jol()
+end, {})
+new_cmd("JdtBytecode", function()
+  require("jdtls").javap()
+end, {})
+new_cmd("JdtJshell", function()
+  require("jdtls").jshell()
+end, {})
+new_cmd("JdtOrgImp", function()
+  require("jdtls").organize_import()
+end, {})
+new_cmd("JdtExtVar", function()
+  require("jdtls").extract_variable()
+end, {})
+new_cmd("JdtExtConst", function()
+  require("jdtls").extract_constant()
+end, {})
+new_cmd("JdtExtMet", function()
+  require("jdtls").extract_method()
+end, {})
+
+
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
 require("jdtls").start_or_attach(config)
