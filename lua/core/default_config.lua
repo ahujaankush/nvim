@@ -46,7 +46,7 @@ M.ui = {
     },
 
     CursorLine = {
-      bg = "black2",
+      bg = "one_bg",
     },
     Comment = {
       fg = "light_grey",
@@ -54,6 +54,7 @@ M.ui = {
     },
     ["@text.emphasis"] = { italic = true, bold = false, fg = "white" },
     ["@text.strong"] = { italic = false, bold = true, fg = "white" },
+    ["NonText"] = { fg = "pink" },
   }),
   changed_themes = {},
   theme_toggle = { "onedark", "one_light" },

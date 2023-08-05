@@ -9,7 +9,7 @@ return {
           left = "2",
           right = "2",
         },
-        width = "content",
+        width = "full",
       },
       heading = {
         icons = {
